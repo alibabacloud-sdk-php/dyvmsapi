@@ -2,7 +2,33 @@
 
 namespace AlibabaCloud\Dyvmsapi\V20170525;
 
+use AlibabaCloud\ApiResolverTrait;
 use AlibabaCloud\Rpc;
+
+/**
+ * Resolve Api based on the method name.
+ *
+ * @method QueryRobotInfoList queryRobotInfoList(array $options = [])
+ * @method QueryCallDetailByTaskId queryCallDetailByTaskId(array $options = [])
+ * @method BatchRobotSmartCall batchRobotSmartCall(array $options = [])
+ * @method AddRtcAccount addRtcAccount(array $options = [])
+ * @method GetRtcToken getRtcToken(array $options = [])
+ * @method VoipAddAccount voipAddAccount(array $options = [])
+ * @method VoipGetToken voipGetToken(array $options = [])
+ * @method AddVoipAccount addVoipAccount(array $options = [])
+ * @method GetVoipToken getVoipToken(array $options = [])
+ * @method SmartCall smartCall(array $options = [])
+ * @method QueryCallDetailByCallId queryCallDetailByCallId(array $options = [])
+ * @method CancelCall cancelCall(array $options = [])
+ * @method ClickToDial clickToDial(array $options = [])
+ * @method IvrCall ivrCall(array $options = [])
+ * @method SingleCallByTts singleCallByTts(array $options = [])
+ * @method SingleCallByVoice singleCallByVoice(array $options = [])
+ */
+class DyvmsapiApiResolver
+{
+    use ApiResolverTrait;
+}
 
 class V20170525Rpc extends Rpc
 {
@@ -319,17 +345,17 @@ class IvrCall extends V20170525Rpc
 {
 
     /**
-     * @param array $value
+     * @param array $menuKeyMap
      *
      * @return $this
      */
-    public function withMenuKeyMap(array $value)
+    public function withMenuKeyMap(array $menuKeyMap)
     {
-        $this->data['MenuKeyMap'] = $value;
-        foreach ($value as $i => $iValue) {
-            $this->options['query']['MenuKeyMap.' . ($i + 1) . '.Code'] = $value[$i]['Code'];
-            $this->options['query']['MenuKeyMap.' . ($i + 1) . '.TtsParams'] = $value[$i]['TtsParams'];
-            $this->options['query']['MenuKeyMap.' . ($i + 1) . '.Key'] = $value[$i]['Key'];
+        $this->data['MenuKeyMap'] = $menuKeyMap;
+        foreach ($menuKeyMap as $depth1 => $depth1Value) {
+            $this->options['query']['MenuKeyMap.' . ($depth1 + 1) . '.Code'] = $depth1Value['Code'];
+            $this->options['query']['MenuKeyMap.' . ($depth1 + 1) . '.TtsParams'] = $depth1Value['TtsParams'];
+            $this->options['query']['MenuKeyMap.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
         }
 
         return $this;
